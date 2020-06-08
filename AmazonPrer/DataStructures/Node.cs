@@ -1,4 +1,5 @@
 ﻿using System;
+using AmazonPrer.Interfaces;
 namespace AmazonPrer.DataStructures
 {
     public class Node
@@ -14,10 +15,13 @@ namespace AmazonPrer.DataStructures
         public void setNextNodePointerValue(Node nextNodeAddress) { nextNode = nextNodeAddress; }
         public object getNextNodePointerValue() { return nextNode; }
 
+
+        //Constructor
         public Node()
         {
 
         }
+
 
 
     }
