@@ -58,8 +58,17 @@ namespace AmazonPrer
 
                         //Create a tree from an array of values (no order, generate children by appearance in the array)
 
-                        int[] data = { 1, 2, 3, 4, 5, 6, 7, 8 };
+                        int[] data = { 7,5,10,3,6,9,12 };
                         treeNode T2 = new treeNode().GenerateTreeFromArray(data);
+
+                        Console.WriteLine("Inorder traversal");
+                        T2.inorder(T2);
+
+                        Console.WriteLine("Preorder Traversal");
+                        T2.preorder(T2);
+
+                        Console.WriteLine("Postorder Traversal");
+                        T2.postorder(T2);
 
 
                     }
@@ -77,7 +86,6 @@ namespace AmazonPrer
                         int Total = 0;
                         Total += recursionPlayground.recurseAddMethod(a, 0);
                         Console.WriteLine(Total);
-
                         recursionPlayground.recurseTree(a, 0);
 
                     }
