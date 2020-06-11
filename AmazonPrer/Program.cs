@@ -10,7 +10,7 @@ namespace AmazonPrer
         {
             Console.WriteLine("Scratch Pad to test my Data Sctuctures");
 
-            int caseswitch = 2;
+            int caseswitch = 4;
             switch(caseswitch)
             {
                 case 1:
@@ -90,6 +90,20 @@ namespace AmazonPrer
 
                     }
                     catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                    break;
+
+                case 4:
+                    try
+                    {
+                        int[] data = { 7, 5, 10, 3, 6, 9, 12 };
+                        list T3 = new list();
+                        Node result = T3.arrayTolist(data); 
+
+                    }
+                    catch(Exception ex)
                     {
                         Console.WriteLine(ex);
                     }

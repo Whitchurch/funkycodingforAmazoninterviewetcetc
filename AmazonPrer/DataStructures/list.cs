@@ -49,5 +49,33 @@ namespace AmazonPrer.DataStructures
             Console.WriteLine(printnextNode.getNodeValue());
 
         }
+
+        public Node inserNode(Node currentnode, int item)
+        {
+            if(currentnode == null)
+            {
+                currentnode = new Node();
+                currentnode.setNodeValue(item);
+                currentnode.setNextNodePointerValue(null);
+            }
+            else
+            {
+                currentnode.nextNode = inserNode(currentnode.nextNode,item);
+            }
+            return currentnode;
+
+        }
+
+        public Node arrayTolist(int[] item)
+        {
+            currentNode = null;
+
+            foreach(int i in item)
+            {
+                currentNode = inserNode(currentNode, i);
+            }
+
+            return currentNode;
+        }
     }
 }

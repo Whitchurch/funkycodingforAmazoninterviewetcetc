@@ -5,8 +5,9 @@ namespace AmazonPrer.DataStructures
     public class Node
     {
         //fields
-        private Node nextNode;
-        private object data;
+        public Node nextNode;
+        public object data;
+       
 
         //Properties
         public void setNodeValue(object v1) { data = v1; }

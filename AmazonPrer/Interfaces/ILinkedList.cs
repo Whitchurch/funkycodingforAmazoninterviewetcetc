@@ -6,5 +6,6 @@ namespace AmazonPrer.Interfaces
     {
         public void AddItem(Node item);
         public void printAll();
+        public Node arrayTolist(int[] item);
     }
 }
