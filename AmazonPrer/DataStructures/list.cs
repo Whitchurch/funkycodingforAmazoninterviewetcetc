@@ -66,6 +66,25 @@ namespace AmazonPrer.DataStructures
 
         }
 
+        public static Node insertNodeAtHead(Node currentnode,int item)
+        {
+            if (currentnode == null)
+            {
+                currentnode = new Node();
+                currentnode.setNodeValue(item);
+                currentnode.setNextNodePointerValue(null);
+            }
+            else
+            {
+                Node temp = new Node();
+                temp.data = item;
+                temp.nextNode = currentnode;
+                currentnode.nextNode = temp;
+            }
+
+            return currentnode;
+        }
+
         public Node arrayTolist(int[] item)
         {
             currentNode = null;

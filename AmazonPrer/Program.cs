@@ -10,7 +10,9 @@ namespace AmazonPrer
         {
             Console.WriteLine("Scratch Pad to test my Data Sctuctures");
 
-            int caseswitch = 4;
+            Node tracker;
+
+            int caseswitch = 6;
             switch(caseswitch)
             {
                 case 1:
@@ -100,10 +102,44 @@ namespace AmazonPrer
                     {
                         int[] data = { 7, 5, 10, 3, 6, 9, 12 };
                         list T3 = new list();
-                        Node result = T3.arrayTolist(data); 
+                        Node result = T3.arrayTolist(data);
+
+                        tracker = result;
+
+                        int newnumber = 77;
+                        list.insertNodeAtHead(tracker, newnumber);
 
                     }
                     catch(Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                    break;
+
+                case 5:
+                    try
+                    {
+
+                        singleInteger s1 = new singleInteger();
+                        int result = s1.retSingleIngeter(456777);
+                        Console.WriteLine("Single digit result");
+                        Console.WriteLine(result);
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                    break;
+
+                case 6:
+                    try
+                    {
+
+                        reverseInteger s1 = new reverseInteger();
+                        s1.reverseIntegerfunc(123);
+                        
+                    }
+                    catch (Exception ex)
                     {
                         Console.WriteLine(ex);
                     }
