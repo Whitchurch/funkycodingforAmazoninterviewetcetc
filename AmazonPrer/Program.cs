@@ -12,7 +12,7 @@ namespace AmazonPrer
 
             Node tracker;
 
-            int caseswitch = 6;
+            int caseswitch = 7;
             switch(caseswitch)
             {
                 case 1:
@@ -145,6 +145,22 @@ namespace AmazonPrer
                     }
                     break;
 
+                case 7:
+                    try
+                    {
+
+                        addArray a1 = new addArray();
+                        int[] item = { 1, 2, 3, 4, 5 };
+                        Console.WriteLine(a1.addArrayFunc(item, (item.Length)-1));
+                       
+                        
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                    break;
 
             }
 
