@@ -12,7 +12,7 @@ namespace AmazonPrer
 
             Node tracker;
 
-            int caseswitch = 7;
+            int caseswitch = 8;
             switch(caseswitch)
             {
                 case 1:
@@ -162,9 +162,71 @@ namespace AmazonPrer
                     }
                     break;
 
+                case 8:
+                    try
+                    {
+                        int[,] a = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } };
+                        int nrows = 4;
+                        int ncols = 4;
+
+                        for(int i = 0; i<ncols-1; i++)
+                        {
+                            Console.WriteLine(a[0,i]);
+                        }
+
+                        for(int i = 0; i<nrows-1;i++)
+                        {
+                            Console.WriteLine(a[i, ncols - 1]);
+                        }
+
+                        for (int i = ncols-1; i > 0; i--)
+                        {
+                            Console.WriteLine(a[ncols-1,i]);
+                        }
+
+                        for (int i = nrows-1; i> 0; i--)
+                        {
+                            Console.WriteLine(a[i,0]);
+                        }
+
+                        int[,] a1 = {{ 6, 7}, { 10, 11 } };
+                        nrows = 2;
+                        ncols = 2;
+
+                        for (int i = 0; i < ncols - 1; i++)
+                        {
+                            Console.WriteLine(a1[0, i]);
+                        }
+
+                        for (int i = 0; i < nrows - 1; i++)
+                        {
+                            Console.WriteLine(a1[i, ncols - 1]);
+                        }
+
+                        for (int i = ncols - 1; i > 0; i--)
+                        {
+                            Console.WriteLine(a1[ncols - 1, i]);
+                        }
+
+                        for (int i = nrows - 1; i > 0; i--)
+                        {
+                            Console.WriteLine(a1[i, 0]);
+                        }
+
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                    break;
+                    }
+
+
             }
 
 
         }
     }
-}
+
