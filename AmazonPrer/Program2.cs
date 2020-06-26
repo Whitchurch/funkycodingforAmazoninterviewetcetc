@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System;
 
-class Solution
+class Solution24
 {
 
     // Complete the superReducedString function below.

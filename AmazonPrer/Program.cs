@@ -6,15 +6,31 @@ namespace AmazonPrer
 {
     class Program
     {
+
+
         static void Main(string[] args)
         {
             Console.WriteLine("Scratch Pad to test my Data Sctuctures");
 
             Node tracker;
 
-            int caseswitch = 8;
+            int caseswitch = 9;
             switch(caseswitch)
             {
+
+                case 9:
+                    try
+                    {
+                        string input = "SOSSPSSQSSOR";
+                        marsExploration(input);
+
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+
+                    break;
                 case 1:
                     #region "LinkedList"
                     try
@@ -223,10 +239,31 @@ namespace AmazonPrer
                     break;
                     }
 
+            
 
             }
 
+        static int marsExploration(string s)
+        {
+
+            return CountSOS(s, s.Length, s.Length / 3, 0);
+        }
+
+        static int CountSOS(string s, int lengthString, int turns, int count)
+        {
+
+            while (turns < lengthString)
+            {
+                CountSOS(s.Substring(turns, 3), lengthString, turns, count);
+                count += 1;
+                turns += 3;
+            }
+
+            return count;
 
         }
+
+
+    }
     }
 

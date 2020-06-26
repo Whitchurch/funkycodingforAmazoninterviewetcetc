@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 namespace hackerranker
 {
-    class Program
+    class Program1
     {
 
         public class result
