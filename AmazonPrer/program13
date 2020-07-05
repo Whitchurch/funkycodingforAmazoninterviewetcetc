@@ -1,0 +1,136 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace sandbox
+{
+    class Program
+    {
+
+        class treeNode
+        {
+            public int value { get; set; }
+            public treeNode leftnode { get; set; }
+            public treeNode rightnode { get; set; }
+            public bool visited = false;
+
+            public treeNode()
+            {
+                leftnode = null;
+                rightnode = null;
+            }
+
+        }
+
+        static void DFS(treeNode t1)
+        {
+
+            if (t1.rightnode == null | t1.leftnode == null | t1 == null)
+                return;
+            
+            if(t1.visited != true)
+            {
+                Console.WriteLine(t1.value);
+                Console.WriteLine(t1.leftnode.value);
+                Console.WriteLine(t1.rightnode.value);
+                t1.visited = true;
+                t1.leftnode.visited = true;
+                t1.rightnode.visited = true;
+            }
+
+            
+        }
+
+        static void Main(string[] args)
+        {
+
+            //Get a tree built manually for testing purposes
+            //                  1
+            //                 / \
+            //               2     3
+            //              / \   / \
+            //             4   5 6   7
+
+            treeNode t1 = new treeNode();
+            t1.value = 1;
+
+            treeNode t2 = new treeNode();
+            t2.value = 2;
+
+            treeNode t3 = new treeNode();
+            t3.value = 3;
+
+            treeNode t4 = new treeNode();
+            t4.value = 4;
+
+            treeNode t5 = new treeNode();
+            t5.value = 5;
+
+            treeNode t6 = new treeNode();
+            t6.value = 6;
+
+            treeNode t7 = new treeNode();
+            t7.value = 7;
+
+            treeNode t8 = new treeNode();
+            t8.value = 8;
+
+            treeNode t9 = new treeNode();
+            t9.value = 9;
+
+            treeNode t10 = new treeNode();
+            t10.value = 10;
+
+            treeNode t11 = new treeNode();
+            t11.value = 11;
+
+            treeNode t12 = new treeNode();
+            t12.value = 12;
+
+            treeNode t13 = new treeNode();
+            t13.value = 13;
+
+            treeNode t14 = new treeNode();
+            t14.value = 14;
+
+            treeNode t15 = new treeNode();
+            t15.value = 15;
+
+            treeNode t16 = new treeNode();
+            t16.value = 16;
+
+
+            t1.leftnode = t2;
+            t1.rightnode = t3;
+
+            t2.leftnode = t4;
+            t2.rightnode = t5;
+
+            t3.leftnode = t6;
+            t3.rightnode = t7;
+
+            t4.leftnode = t8;
+            t4.rightnode = t9;
+
+            t5.leftnode = t10;
+            t5.rightnode = t11;
+
+            t6.leftnode = t12;
+            t6.rightnode = t13;
+
+            t7.leftnode = t14;
+            t7.rightnode = t15;
+
+            treeNode[] t = { t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15 };
+
+          foreach(var item in t)
+            {
+                DFS(item);
+            }
+
+            Console.ReadLine();
+        }
+    }
+}
