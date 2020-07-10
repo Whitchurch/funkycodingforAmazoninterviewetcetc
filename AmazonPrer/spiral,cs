@@ -1,0 +1,151 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace sandbox
+{
+    class Program
+    {
+        
+        static bool repeatoperation(int[,] mat)
+        {
+            bool repeat = false;
+            for (int i = 0; i < mat.GetLength(0); i++)
+            {
+                for (int j = 0; j < mat.GetLength(1); j++)
+                {
+                    if (mat[i, j] != 1)
+                    {
+                        repeat = true;
+
+                    }
+                }
+
+            }
+            return repeat;
+        }
+
+        static void displayMatrix(int[,] mat)
+        {
+            for (int i = 0; i < mat.GetLength(0); i++)
+            {
+                for (int j = 0; j < mat.GetLength(1); j++)
+                {
+                    Console.Write(mat[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+
+        class position
+        {
+            public int posX { get; set; }
+            public int posY { get; set; }
+            
+        }
+
+        //Go right
+        static position goRight(int[,]mat, int right, int down, int left, int up, position p)
+        {
+            while(p.posY < right)
+            {
+                Console.WriteLine(mat[p.posX, p.posY]);
+                p.posY++;
+            }
+
+            return p;
+        }
+        //Go down
+        static position goDown(int[,] mat, int right, int down, int left, int up, position p)
+        {
+            while (p.posX < right)
+            {
+                Console.WriteLine(mat[p.posX, p.posY]);
+                p.posX++;
+            }
+
+            return p;
+        }
+
+        //Go left
+        static position goLeft(int[,] mat, int right, int down, int left, int up, position p)
+        {
+            while (p.posY > left)
+            {
+                Console.WriteLine(mat[p.posX, p.posY]);
+                p.posY--;
+            }
+
+            return p;
+        }
+
+        //Go up
+        static position goUp(int[,] mat, int right, int down, int left, int up, position p)
+        {
+            while (p.posX > up)
+            {
+                Console.WriteLine(mat[p.posX, p.posY]);
+                p.posX--;
+            }
+
+            return p;
+        }
+
+        static void Main(string[] args)
+        {
+
+            int[,] mat = { { 1,2,3,4,5,6 }, { 7,8,9,10,11,12},{13,14,15,16,17,18 },{19,20,21,22,23,24},{ 25,26,27,28,29,30},{ 31,32,33,34,35,36} };
+            displayMatrix(mat);
+
+            // Gives the top boundary.
+           // Console.WriteLine(mat.GetLength(0)-1);
+
+            // Gives the right boundary
+            //Console.WriteLine(mat.GetLength(1)-1);
+
+            // Gives the bottom boundary
+            //Console.WriteLine(mat.GetLowerBound(0));
+
+            //Gives the left boundary
+            //Console.WriteLine(mat.GetLowerBound(1));
+
+            int right = mat.GetLength(0) - 1;
+            int left = mat.GetLowerBound(0);
+
+            int down = mat.GetLength(1) - 1;
+            int up = mat.GetLowerBound(1);
+
+            position p = new position();
+            p.posX = 0;
+            p.posY = 0;
+
+
+            int turns = 0;
+            while(turns < mat.Length)
+            {
+                p = goRight(mat, right, down, left, up, p);
+                p = goDown(mat, right, down, left, up, p);
+                p = goLeft(mat, right, down, left, up, p);
+                p = goUp(mat, right, down, left, up, p);
+
+                p.posY++;
+                p.posX++;
+
+                right--;
+                up++;
+                left++;
+                down--;
+
+                turns++;
+            }
+
+
+
+            Console.ReadKey();
+
+        }
+    }
+}
+
