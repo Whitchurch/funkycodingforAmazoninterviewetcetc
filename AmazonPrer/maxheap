@@ -1,0 +1,223 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace sandbox
+{
+    class Program11
+    {
+
+        class Node
+        {
+            public int data { get; set; }
+            public Node rnode { get; set; }
+            public Node lnode { get; set; }
+
+            public Node(int pdata, Node plnode, Node prnode)
+            {
+                this.data = pdata;
+                this.rnode = prnode;
+                this.lnode = plnode;
+            }
+        }
+
+        class TreeStructure
+        {
+            public Node head { get; set; }
+
+            public TreeStructure()
+            {
+                head = null;
+            }
+        }
+
+
+
+
+        static Node GenerateTree(int[] pdataarray, TreeStructure ptree, Node head, int index)
+        {
+            if (index > pdataarray.Length - 1)
+                return null;
+
+            head = new Node(pdataarray[index],null,null);
+            head.lnode = GenerateTree(pdataarray, ptree, head.lnode, 2 * index+1);
+            head.rnode = GenerateTree(pdataarray, ptree, head.rnode, ((2 * index) + 2));
+
+
+            return head;
+        }
+
+
+        static void BFS(TreeStructure ptree)
+        {
+            queueStorage.Enqueue(ptree.head);
+            while(queueStorage.Count > 0)
+            {
+                Node temp = queueStorage.Dequeue();
+                Console.WriteLine(temp.data);
+
+                if(temp.lnode != null)
+                queueStorage.Enqueue(temp.lnode);
+
+                if(temp.rnode != null)
+                queueStorage.Enqueue(temp.rnode);
+            }
+        }
+
+        static Node Last;
+        static Node temp;
+        static Node BFSLast(TreeStructure ptree)
+        {
+           
+            queueStorage.Enqueue(ptree.head);
+            while (queueStorage.Count > 0)
+            {
+                Node temp = queueStorage.Dequeue();
+               
+              
+
+                if (temp.lnode != null)
+                    queueStorage.Enqueue(temp.lnode);
+
+                if (temp.rnode != null)
+                    queueStorage.Enqueue(temp.rnode);
+            }
+
+           
+            return Last;
+        }
+
+        static void DF(TreeStructure ptree, Node pnode)
+        {
+            if (pnode == null)
+                return;
+
+            DF(ptree, pnode.lnode);
+            if(pnode.lnode != null)
+            Console.WriteLine(pnode.lnode.data);
+
+            DF(ptree, pnode.rnode);
+            if(pnode.rnode != null)
+            Console.WriteLine(pnode.rnode.data);
+        }
+
+        static bool heapifyflag = false;
+        static int[]  heapify(int[] pdataarray, int index)
+        {
+
+               
+                while (index > 0)
+                {
+                   
+                    if (index <= 0)
+                        return pdataarray;
+                    int current = pdataarray[index];
+                    int parent = pdataarray[(index - 1) / 2];
+
+                    if (current > parent)
+                    {
+                        pdataarray[index] = parent;
+                        pdataarray[(index - 1) / 2] = current;
+                    
+                        heapify(pdataarray, (index - 1) / 2);
+                    heapifyflag = true;
+
+                }
+
+                    index--;
+
+                
+            }
+
+            if(heapifyflag == true)
+            {
+                heapifyflag = false;
+                heapify(pdataarray, pdataarray.Length - 1);
+            }
+               
+
+            return pdataarray;
+            
+            
+
+        }
+
+        /* static Node GenerateMaxHeap(int[] pdataarray, TreeStructure ptree, Node head, int index)
+         {
+             if (index > pdataarray.Length - 1)
+                 return null;
+
+             head = new Node(pdataarray[index], null, null);
+             head.lnode = GenerateMaxHeap(pdataarray, ptree, head.lnode, 2 * index + 1);
+
+             if(head.lnode != null)
+             {
+                 if (head.lnode.data > head.data)
+                 {
+                     int temp = head.data;
+                     int temp2 = head.lnode.data;
+                     head.data = temp2;
+                     head.lnode.data = temp;
+                 }
+             }
+
+
+             head.rnode = GenerateMaxHeap(pdataarray, ptree, head.rnode, 2 * index + 2);
+             if(head.rnode != null)
+             {
+                 if (head.rnode.data > head.data)
+                 {
+                     int temp = head.data;
+                     int temp2 = head.rnode.data;
+                     head.data = temp2;
+                     head.rnode.data = temp;
+                 }
+             }
+
+
+             return head;
+         } */
+
+
+        static void SortHeap(TreeStructure ptree, int[] parray, int index)
+        {
+
+
+        }
+
+        static Queue<Node> queueStorage = new Queue<Node>();
+        static TreeStructure tree = new TreeStructure();
+
+        public static void MainEX(string[] args)
+        {
+            //int[] dataarray = { 1, 2, 3, 4, 5,6,7};
+            int[] dataarray = { 10, 20, 15, 30, 40 };
+
+            //int[] dataarray = { 1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17 };
+
+            //int[] dataarray = { 4, 10, 3, 5, 1 };
+
+            Node head = null;
+            //tree.head =  GenerateTree(dataarray, tree, head,0);
+            // BFS(tree);
+            //DF(tree, tree.head);
+            //head = GenerateMaxHeap(dataarray, tree, head, 0);
+
+            int[] result = heapify(dataarray, dataarray.Length - 1);
+            tree.head = GenerateTree(result, tree, head, 0);
+
+            int[] sortarray = new int[dataarray.Length]; 
+            BFS(tree);
+
+           
+
+            SortHeap(tree, sortarray, 0);
+
+            Console.ReadLine();
+
+        }
+
+    }
+}
